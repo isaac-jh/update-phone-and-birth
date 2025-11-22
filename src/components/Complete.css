@@ -1,0 +1,52 @@
+.complete-container {
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 25px;
+  padding: 40px 20px;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.complete-container:hover {
+  opacity: 0.8;
+}
+
+.complete-icon {
+  font-size: 80px;
+  animation: scaleIn 0.5s ease-out;
+}
+
+.complete-message {
+  font-size: 28px;
+  font-weight: 600;
+  color: #8B6F47;
+  text-align: center;
+  animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+

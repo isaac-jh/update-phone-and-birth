@@ -1,0 +1,81 @@
+.name-input-container {
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+.name-input-title {
+  font-size: 24px;
+  font-weight: 600;
+  color: #8B6F47;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.name-input-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.name-input-field {
+  width: 100%;
+  padding: 18px 20px;
+  border: 2px solid #FFD89B;
+  border-radius: 20px;
+  font-size: 16px;
+  background-color: #FFFBF0;
+  color: #8B6F47;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.name-input-field:focus {
+  border-color: #FFC966;
+  background-color: #FFFFFF;
+  box-shadow: 0 0 0 3px rgba(255, 201, 102, 0.2);
+}
+
+.name-input-field::placeholder {
+  color: #D4A574;
+}
+
+.name-input-button {
+  width: 100%;
+  padding: 18px 20px;
+  border: none;
+  border-radius: 20px;
+  font-size: 18px;
+  font-weight: 600;
+  background: linear-gradient(135deg, #FFD89B 0%, #FFC966 100%);
+  color: #8B6F47;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(255, 201, 102, 0.3);
+}
+
+.name-input-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(255, 201, 102, 0.4);
+}
+
+.name-input-button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.name-input-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.error-message {
+  color: #E74C3C;
+  font-size: 14px;
+  text-align: center;
+  margin-top: 10px;
+}
+
