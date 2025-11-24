@@ -97,19 +97,33 @@ const MemberInput = ({ members, onComplete, onBack }) => {
       const backendApi = process.env.REACT_APP_BACKEND_API || 'https://attendance-dev.icoramdeo.com/api';
       
       // 각 멤버마다 PUT 요청
-      const updatePromises = memberData.map(async (member) => {
-        const birthDate = parseBirthYear(member.birthYear);
-        const phoneNumber = parsePhoneNumber(member.phoneNumber);
+      const updatePromises = memberData.map(async (member, index) => {
+        const originalMember = loadedMembers[index];
+        
+        // 사용자가 입력한 값이 있으면 파싱, 없으면 기존 값 사용
+        const birthDate = member.birthYear 
+          ? parseBirthYear(member.birthYear) 
+          : (originalMember.birth_date || originalMember.birthYear || '');
+        
+        const phoneNumber = member.phoneNumber 
+          ? parsePhoneNumber(member.phoneNumber) 
+          : (originalMember.phone_number || originalMember.phoneNumber || '');
+
+        // body 객체 동적 생성 (null이나 빈 문자열이 아닌 경우만 포함)
+        const body = {};
+        if (birthDate && birthDate !== '') {
+          body.birth_date = birthDate;
+        }
+        if (phoneNumber && phoneNumber !== '') {
+          body.phone_number = phoneNumber;
+        }
 
         const response = await fetch(`${backendApi}/users/${member.userId}`, {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({
-            birth_date: birthDate,
-            phone_number: phoneNumber,
-          }),
+          body: JSON.stringify(body),
         });
 
         if (!response.ok) {
